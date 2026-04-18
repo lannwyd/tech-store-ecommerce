@@ -1,23 +1,22 @@
-// ── Load cart from localStorage ───────────────────────
 let cart = [];
+
 try {
     const saved = localStorage.getItem('cart');
     if (saved) cart = JSON.parse(saved);
 } catch (e) { }
 
-// ── Save back ─────────────────────────────────────────
 function saveCart() {
-    try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (e) { }
+    try {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } catch (e) { }
 }
 
-// ── Recalculate and update summary ────────────────────
 function updateSummary() {
     const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     document.getElementById('subtotal').textContent = subtotal.toLocaleString() + ' DZD';
     document.getElementById('total').textContent = subtotal.toLocaleString() + ' DZD';
 }
 
-// ── Remove item ───────────────────────────────────────
 function removeItem(btn) {
     const card = btn.closest('.cart-item');
     const id = parseInt(card.dataset.id);
@@ -26,7 +25,6 @@ function removeItem(btn) {
     renderCart();
 }
 
-// ── Change quantity ───────────────────────────────────
 function changeQty(btn, delta) {
     const card = btn.closest('.cart-item');
     const id = parseInt(card.dataset.id);
@@ -42,7 +40,6 @@ function changeQty(btn, delta) {
     renderCart();
 }
 
-// ── Render ────────────────────────────────────────────
 function renderCart() {
     const col = document.getElementById('cart-items-col');
     const emptyState = document.getElementById('empty-cart');
@@ -88,7 +85,6 @@ function renderCart() {
                             <span class="material-symbols-outlined">+</span>
                         </button>
                     </div>
-                    <button class="btn-remove" onclick="removeItem(this)">
                     <button class="btn-remove" onclick="removeItem(this)" aria-label="Remove">
                         <i class="fa-solid fa-trash-can"></i>
                         Remove

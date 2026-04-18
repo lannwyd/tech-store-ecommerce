@@ -289,11 +289,11 @@ const products = [
       { name: "Black", hex: "#1a1a1a" }
     ],
     images: [
-      "assets/Products_images/HP-Wireless-Keyboard-Mouse-1.jpg",
-      "assets/Products_images/HP-Wireless-Keyboard-Mouse-2.jpg",
-      "assets/Products_images/HP-Wireless-Keyboard-Mouse-3.jpg"
+      "assets/Products_images/HP-Wireless-Keyboard-&-Mouse-1.jpg",
+      "assets/Products_images/HP-Wireless-Keyboard-&-Mouse-2.jpg",
+      "assets/Products_images/HP-Wireless-Keyboard-&-Mouse-3.jpg"
     ],
-    specs: { type: "Keyboard + Mouse", connection: "Wireless", battery: "AAA" },
+    specs: { type: "Keyboard + Mouse", connection: "Wireless", lang: "AZERTY" },
     stock: 30
   }
 ];
@@ -358,3 +358,13 @@ const wilayas = [
   { code: "57", name: "El M'Ghair" },
   { code: "58", name: "El Meniaa" }
 ]
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html'
+  document.querySelectorAll('.nav__links a').forEach(link => {
+    link.classList.remove('active')
+    const linkPage = link.getAttribute('href').split('/').pop()
+    if (linkPage === currentPage) link.classList.add('active')
+  })
+})

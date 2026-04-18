@@ -1,5 +1,4 @@
- /* ─── Variables ─────────────────────────────────────── */
- :root {
+:root {
      --primary: #adc6ff;
      --primary-container: #4d8eff;
      --on-primary: #002e6a;
@@ -28,12 +27,11 @@
      --text: #dae2fd;
      --muted: #7b86a8;
      --font-head: 'Arimo', sans-serif;
-     --font-body: 'DM Sans', sans-serif;
      --radius: 12px;
      --transition: .22s cubic-bezier(.4, 0, .2, 1);
  }
 
- /* ─── Reset ─────────────────────────────────────────── */
+ 
  *,
  *::before,
  *::after {
@@ -80,7 +78,7 @@
      line-height: 1;
  }
 
- /* ─── Navbar ─────────────────────────────────────────── */
+ 
  .nav {
      position: fixed;
      top: 0;
@@ -198,7 +196,7 @@
      transform: scale(.92);
  }
 
- /* ─── Main ───────────────────────────────────────────── */
+ 
  main {
      padding-top: 6rem;
      padding-bottom: 5rem;
@@ -215,7 +213,7 @@
      }
  }
 
- /* ─── Progress Steps ─────────────────────────────────── */
+ 
  .progress {
      margin-bottom: 3rem;
  }
@@ -309,7 +307,7 @@
      color: var(--on-surface-variant);
  }
 
- /* ─── Checkout Layout ────────────────────────────────── */
+ 
 .checkout-main {
     padding-top: 6rem;
     padding-bottom: 5rem;
@@ -332,7 +330,6 @@
     }
 }
 
-/* ─── Breadcrumbs ────────────────────────────────────── */
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -344,7 +341,6 @@
 
 .breadcrumbs a:hover { color: var(--primary); }
 
-/* ─── Form Col ───────────────────────────────────────── */
 .checkout-form-col {
     display: flex;
     flex-direction: column;
@@ -444,8 +440,7 @@
     box-shadow: 0 0 0 3px rgba(173, 198, 255, 0.1);
 }
 
-
- /* ─── Payment Tabs ───────────────────────────────────── */
+ 
  .payment-tabs {
      display: grid;
      grid-template-columns: 1fr 1fr;
@@ -521,7 +516,6 @@
      color: var(--on-surface-variant);
  }
 
-
  .delivery-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -562,7 +556,7 @@
     color: var(--primary);
     font-weight: 500;
 }
- /* ─── Summary ────────────────────────────────────────── */
+ 
 .checkout-summary {
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -752,7 +746,7 @@
      color: var(--on-surface);
  }
 
- /* ─── Price Breakdown ────────────────────────────────── */
+ 
  .price-breakdown {
      padding-top: 1.5rem;
      border-top: 1px solid rgba(66, 71, 84, 0.15);
@@ -800,7 +794,7 @@
      letter-spacing: -0.03em;
  }
 
- /* ─── Place Order Button ─────────────────────────────── */
+ 
  .btn-place-order {
     width: 100%;
     padding: 1rem;
@@ -834,7 +828,7 @@
      font-size: 0.7rem;
  }
 
- /* ─── Warranty Upsell ────────────────────────────────── */
+ 
  .upsell-card {
      padding: 1.5rem;
      border-radius: 0.75rem;
@@ -881,7 +875,7 @@
 .field--invalid {
     border-color: var(--error) !important;
 }
- /* ─── Footer ─────────────────────────────────────────── */
+ 
  .footer {
      background: var(--bg);
      border-top: 1px solid var(--border);
@@ -1023,9 +1017,7 @@
      color: var(--muted);
  }
 
- /* ════════════════════════════════════════
-     RESPONSIVE
-  ════════════════════════════════════════ */
+ 
  @media (max-width: 1100px) {
      .footer__grid {
          grid-template-columns: 1fr 1fr;
@@ -1037,9 +1029,7 @@
          padding: 1rem 1.5rem;
      }
 
-     .nav__links {
-         display: none;
-     }
+     
      .footer {
          padding: 3rem 1.5rem 0;
      }
@@ -1054,7 +1044,7 @@
      }
  }
 
- /* ─── Scrollbar ──────────────────────────────────────── */
+ 
  ::-webkit-scrollbar {
      width: 6px;
  }

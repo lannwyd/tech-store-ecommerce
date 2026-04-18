@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get("id"), 10);
 const product = products.find(item => item.id === productId);
-// ── Cart (same logic as home.js) ──────────────────────
+
 let cart = [];
 
 function loadCart() {
@@ -13,13 +13,17 @@ function loadCart() {
 }
 
 function saveCart() {
-    try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (e) { }
+    try {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } catch (e) { }
 }
 
 function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
     if (!badge) return;
+
     const total = cart.reduce((sum, item) => sum + item.qty, 0);
+
     if (total === 0) {
         badge.style.display = 'none';
     } else {
@@ -30,18 +34,22 @@ function updateCartBadge() {
 
 function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
+
     if (existing) {
         existing.qty++;
     } else {
         cart.push({ ...product, qty: 1 });
     }
+
     saveCart();
     updateCartBadge();
 }
 
 loadCart();
+
 if (!product) {
     const productLayout = document.querySelector(".product-layout");
+
     if (productLayout) {
         productLayout.innerHTML = `
             <div style="padding:40px 0;">
@@ -61,22 +69,22 @@ function initProductPage(p) {
 
     const breadcrumbType = document.getElementById("breadcrumb-type");
     const breadcrumbName = document.getElementById("breadcrumb-name");
-    const productName    = document.getElementById("product-name");
-    const productPrice   = document.getElementById("product-price");
-    const mainImage      = document.getElementById("main-image");
-    const thumbnails     = document.getElementById("thumbnails");
-    const specsGrid      = document.getElementById("specs-grid");
-    const colorOptions   = document.getElementById("color-options");
+    const productName = document.getElementById("product-name");
+    const productPrice = document.getElementById("product-price");
+    const mainImage = document.getElementById("main-image");
+    const thumbnails = document.getElementById("thumbnails");
+    const specsGrid = document.getElementById("specs-grid");
+    const colorOptions = document.getElementById("color-options");
     const storageOptions = document.getElementById("storage-options");
     const storageWrapper = document.getElementById("storage-wrapper");
-    const stockBadge     = document.getElementById("product-badge");
-    const buyBtn         = document.querySelector(".btn-buy");
-    const cartBtn        = document.querySelector(".btn-cart");
+    const stockBadge = document.getElementById("product-badge");
+    const buyBtn = document.querySelector(".btn-buy");
+    const cartBtn = document.querySelector(".btn-cart");
 
     if (breadcrumbType) breadcrumbType.textContent = p.type;
     if (breadcrumbName) breadcrumbName.textContent = p.name;
-    if (productName)    productName.textContent    = p.name;
-    if (productPrice)   productPrice.textContent   = `${p.price.toLocaleString()} DZD`;
+    if (productName) productName.textContent = p.name;
+    if (productPrice) productPrice.textContent = `${p.price.toLocaleString()} DZD`;
 
     if (mainImage) {
         mainImage.src = p.images[0];
@@ -133,19 +141,23 @@ function initProductPage(p) {
         if (buyBtn) buyBtn.remove();
         if (cartBtn) cartBtn.remove();
     } else {
-        if (cartBtn) cartBtn.addEventListener("click", () => {
-            addToCart(p);
-        });
-        if (buyBtn) buyBtn.addEventListener("click", () => {
-            addToCart(p);
-            window.location.href = "cart.html";
-        });
+        if (cartBtn) {
+            cartBtn.addEventListener("click", () => {
+                addToCart(p);
+            });
+        }
+
+        if (buyBtn) {
+            buyBtn.addEventListener("click", () => {
+                addToCart(p);
+                window.location.href = "cart.html";
+            });
+        }
     }
 
     renderRelated(p);
 }
 
-// ── Related products ──────────────────────────────────────────────
 function renderRelated(p) {
     const grid = document.getElementById("related-grid");
     const section = document.querySelector(".related-section");
@@ -162,6 +174,7 @@ function renderRelated(p) {
 
     grid.innerHTML = related.map(item => {
         const inStock = item.stock > 0;
+
         return `
         <a href="product.html?id=${item.id}" class="related-card">
             <div class="related-card__img">
@@ -173,16 +186,15 @@ function renderRelated(p) {
                 <div class="related-card__footer">
                     <span class="related-card__price">${item.price.toLocaleString()} DZD</span>
                     ${inStock
-                        ? `<span class="badge badge--stock"><span class="dot"></span>In Stock</span>`
-                        : `<span class="badge badge--out"><span class="dotout"></span>Out of Stock</span>`
-                    }
+                ? `<span class="badge badge--stock"><span class="dot"></span>In Stock</span>`
+                : `<span class="badge badge--out"><span class="dotout"></span>Out of Stock</span>`
+            }
                 </div>
             </div>
         </a>`;
     }).join("");
 }
 
-// ── Gallery switcher ──────────────────────────────────────────────
 function switchImage(btn, index) {
     document.querySelectorAll(".gallery__thumb").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");

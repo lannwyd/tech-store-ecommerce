@@ -1,19 +1,14 @@
-// ── Pagination state ──────────────────────────────────────────────
 const ITEMS_PER_PAGE = 15;
 let currentPage = 1;
 let currentList = [];
 let cart = [];
 
-// ── Chip filter (multi-select toggle) ────────────────────────────
 document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
         chip.classList.toggle('active');
         applyFilters();
     });
 });
-
-
-// ── Cart ─────────────────────────────────────────────────────────
 
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
@@ -33,21 +28,24 @@ function addToCart(productId) {
 function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
     if (!badge) return;
+
     const total = cart.reduce((sum, item) => sum + item.qty, 0);
+
     if (total === 0) {
         badge.style.display = 'none';
     } else {
         badge.style.display = 'flex';
         badge.textContent = total > 99 ? '99+' : total;
-        // re-trigger pop animation
         badge.style.animation = 'none';
-        badge.offsetHeight; // reflow
+        badge.offsetHeight;
         badge.style.animation = '';
     }
 }
 
 function saveCart() {
-    try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (e) { }
+    try {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } catch (e) { }
 }
 
 function loadCart() {
@@ -60,8 +58,6 @@ function loadCart() {
 
 loadCart();
 
-
-// ── Build pagination buttons dynamically ─────────────────────────
 function renderPagination(totalItems) {
     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
     const container = document.querySelector('.pagination');
@@ -73,6 +69,7 @@ function renderPagination(totalItems) {
         container.style.display = 'none';
         return;
     }
+
     container.style.display = '';
 
     const prev = document.createElement('button');
@@ -122,16 +119,13 @@ function renderPagination(totalItems) {
     container.appendChild(next);
 }
 
-// ── Render the slice for currentPage ─────────────────────────────
 function renderCurrentPage() {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     const pageItems = currentList.slice(start, start + ITEMS_PER_PAGE);
     renderProducts(pageItems, currentList.length);
     renderPagination(currentList.length);
-    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Render product cards ──────────────────────────────────────────
 function renderProducts(list, totalCount) {
     const grid = document.getElementById("product-grid");
     const resultsNumber = document.getElementById("results-number");
@@ -188,9 +182,9 @@ function renderProducts(list, totalCount) {
     });
 }
 
-
 function applyFilters() {
     const checkedBrands = [];
+
     document.querySelectorAll('.checkbox-list input[type="checkbox"]').forEach(cb => {
         if (cb.checked) checkedBrands.push(cb.nextElementSibling.textContent.trim());
     });
@@ -242,6 +236,7 @@ document.querySelector('.nav__search input').addEventListener('input', () => {
 document.querySelectorAll('.checkbox-list input[type="checkbox"]').forEach(cb => {
     cb.addEventListener("change", applyFilters);
 });
+
 document.getElementById("sort").addEventListener("change", applyFilters);
 document.getElementById("price-min").addEventListener("input", applyFilters);
 document.getElementById("price-max").addEventListener("input", applyFilters);

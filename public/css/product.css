@@ -1,24 +1,23 @@
-/* ─── CSS Variables ─────────────────────────────────── */
-        :root {
-            --primary: #adc6ff;
-            --primary-container: #4d8eff;
-            --on-primary: #002e6a;
-            --secondary-container: #304671;
-            --on-secondary-container: #9fb5e7;
-            --surface: #0b1326;
-            --surface-dim: #060e20;
-            --surface-container: #171f33;
-            --surface-container-low: #131b2e;
-            --surface-container-high: #222a3d;
-            --surface-container-highest: #2d3449;
-            --surface-bright: #31394d;
-            --on-surface: #dae2fd;
-            --on-surface-variant: #c2c6d6;
-            --outline: #8c909f;
-            --outline-variant: #424754;
-            --tertiary: #ffb786;
-            --error: #ffb4ab;
-            --bg: #070d1c;
+:root {
+    --primary: #adc6ff;
+    --primary-container: #4d8eff;
+    --on-primary: #002e6a;
+    --secondary-container: #304671;
+    --on-secondary-container: #9fb5e7;
+    --surface: #0b1326;
+    --surface-dim: #060e20;
+    --surface-container: #171f33;
+    --surface-container-low: #131b2e;
+    --surface-container-high: #222a3d;
+    --surface-container-highest: #2d3449;
+    --surface-bright: #31394d;
+    --on-surface: #dae2fd;
+    --on-surface-variant: #c2c6d6;
+    --outline: #8c909f;
+    --outline-variant: #424754;
+    --tertiary: #ffb786;
+    --error: #ffb4ab;
+    --bg: #070d1c;
      --surface: #0e1628;
      --surface-2: #141d30;
      --surface-3: #1b2438;
@@ -34,7 +33,7 @@
      --transition: .22s cubic-bezier(.4, 0, .2, 1);
         }
 
-        /* ─── Reset & Base ──────────────────────────────────── */
+        
         *,
         *::before,
         *::after {
@@ -55,7 +54,6 @@
             text-decoration: none;
             color: inherit;
         }
-
 
  ul {
      list-style: none;
@@ -79,7 +77,7 @@
             line-height: 1;
         }
 
-        /* ─── Navbar ────────────────────────────────────────── */
+        
         .nav {
      position: fixed;
      top: 0;
@@ -252,7 +250,7 @@
             border-radius: 50%;
         }
 
-        /* ─── Main Layout ───────────────────────────────────── */
+        
         main {
             padding-top: 6rem;
             padding-bottom: 4rem;
@@ -262,7 +260,7 @@
             margin: 0 auto;
         }
 
-        /* ─── Breadcrumbs ───────────────────────────────────── */
+        
         .breadcrumbs {
             display: flex;
             align-items: center;
@@ -284,7 +282,7 @@
             font-size: 0.85rem;
         }
 
-        /* ─── Product Grid ──────────────────────────────────── */
+        
         .product-layout {
             display: grid;
             grid-template-columns: 1fr;
@@ -297,7 +295,7 @@
             }
         }
 
-        /* ─── Gallery ───────────────────────────────────────── */
+        
         .gallery {
             display: flex;
             flex-direction: column-reverse;
@@ -392,7 +390,7 @@
             border: 1px solid rgba(173, 198, 255, 0.25);
         }
 
-        /* ─── Product Info ──────────────────────────────────── */
+        
         .product-info {
             display: flex;
             flex-direction: column;
@@ -437,7 +435,7 @@
             color: var(--primary);
         }
 
-        /* ─── Specs Bento ───────────────────────────────────── */
+        
         .specs-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -466,7 +464,7 @@
             font-size: 0.95rem;
         }
 
-        /* ─── Options ───────────────────────────────────────── */
+        
         .options {
             display: flex;
             flex-direction: column;
@@ -531,7 +529,7 @@
             color: var(--on-secondary-container);
         }
 
-        /* ─── CTA Buttons ───────────────────────────────────── */
+        
         .cta-group {
             display: flex;
             flex-direction: column;
@@ -582,7 +580,7 @@
             transform: scale(0.98);
         }
 
-        /* ─── Perks Row ─────────────────────────────────────── */
+        
         .perks {
             display: flex;
             align-items: center;
@@ -606,7 +604,7 @@
             font-size: 1.1rem;
         }
 
-        /* ─── Section Titles ────────────────────────────────── */
+        
         .section-title {
             font-family: 'Syne', sans-serif;
             font-size: 1.75rem;
@@ -615,7 +613,7 @@
             color: var(--on-surface);
         }
 
-        /* ─── Reviews Section ───────────────────────────────── */
+        
         .reviews-section {
             margin-top: 5rem;
         }
@@ -715,7 +713,7 @@
             font-size: 0.9rem;
         }
 
-        /* ─── Related Products ──────────────────────────────── */
+        
         .related-section {
             margin-top: 5rem;
         }
@@ -808,7 +806,7 @@
             transform: translateX(4px);
         }
 
-        /* ─── Footer ────────────────────────────────────────── */
+        
         .footer {
      background: var(--bg);
      border-top: 1px solid var(--border);
@@ -1110,9 +1108,7 @@
          padding: 1rem 1.5rem;
      }
 
-     .nav__links {
-         display: none;
-     }
+     
 
      .hero {
          padding: 7rem 1.5rem 4rem;
@@ -1142,7 +1138,7 @@
      }
  }
 
-        /* ─── Scrollbar ─────────────────────────────────────── */
+        
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
