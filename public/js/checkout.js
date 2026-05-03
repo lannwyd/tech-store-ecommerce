@@ -103,7 +103,7 @@ document.getElementById('checkout-form').addEventListener('submit', e => {
     let valid = true;
 
     if (!order.customer.firstName) {
-        setError('first-name', 'First name is required.');
+        setError('first-name', 'First name is  required.');
         valid = false;
     }
 

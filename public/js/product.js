@@ -67,8 +67,6 @@ function initProductPage(p) {
 
     document.title = `${p.name} — Nuvix Store`;
 
-    const breadcrumbType = document.getElementById("breadcrumb-type");
-    const breadcrumbName = document.getElementById("breadcrumb-name");
     const productName = document.getElementById("product-name");
     const productPrice = document.getElementById("product-price");
     const mainImage = document.getElementById("main-image");
@@ -81,8 +79,6 @@ function initProductPage(p) {
     const buyBtn = document.querySelector(".btn-buy");
     const cartBtn = document.querySelector(".btn-cart");
 
-    if (breadcrumbType) breadcrumbType.textContent = p.type;
-    if (breadcrumbName) breadcrumbName.textContent = p.name;
     if (productName) productName.textContent = p.name;
     if (productPrice) productPrice.textContent = `${p.price.toLocaleString()} DZD`;
 
